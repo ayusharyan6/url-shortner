@@ -7,10 +7,7 @@ const RedirectHandler = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve logs
     const logs = JSON.parse(localStorage.getItem('logs') || '[]');
-
-    // Find URL by shortcode
     const match = logs
       .reverse()
       .find(log =>
@@ -23,19 +20,13 @@ const RedirectHandler = () => {
       navigate('/');
       return;
     }
-
-    // Check if expired
     const { expiresAt, longUrl } = match.data;
     if (expiresAt && new Date(expiresAt) < new Date()) {
       alert('Link expired');
       navigate('/');
       return;
     }
-
-    // Log redirection event
     logEvent('REDIRECT', { shortcode, to: longUrl });
-
-    // Redirect
     window.location.href = longUrl;
 
   }, [shortcode, navigate]);
