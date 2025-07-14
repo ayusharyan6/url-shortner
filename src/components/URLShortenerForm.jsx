@@ -44,15 +44,11 @@ const URLShortenerForm = () => {
         alert(`Row ${i + 1}: Validity must be a number`);
         return;
       }
-
-      // Simulate shortening logic (can be replaced by API)
       const code = shortcode || Math.random().toString(36).substring(2, 7);
       const expiry = validity ? new Date(Date.now() + validity * 60000) : null;
 
       const shortUrl = `${window.location.origin}/${code}`;
       results.push({ shortUrl, expiry });
-
-      // Log the event
       logEvent('URL_SHORTENED', {
         longUrl: url,
         shortUrl,
