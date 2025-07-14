@@ -1,5 +1,3 @@
-// src/components/Logger.js
-
 export const logEvent = (type, data) => {
     const log = {
       type,
