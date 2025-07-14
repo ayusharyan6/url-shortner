@@ -5,7 +5,7 @@ import { logEvent } from './Logger';
 const RedirectHandler = () => {
   const { shortcode } = useParams();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const logs = JSON.parse(localStorage.getItem('logs') || '[]');
     const match = logs
